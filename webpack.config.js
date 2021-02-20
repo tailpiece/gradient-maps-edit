@@ -2,7 +2,7 @@ const path = require('path');
 
 const config = {
   entry: {
-    'bundle': './src/index.js',
+    'gradient-map-editor': './src/index.js',
   },
   output: {
     path: path.join(__dirname, "public"),

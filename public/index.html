@@ -5,11 +5,96 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>project template</title>
+        <title>Gradient Map Editor for ComicShare</title>
 
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163337668-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-163337668-1');
+        </script>
     </head>
     <body class="body">
-        project template
-        <script src="bundle.js"></script>
+        <div class="flex-box" id="application">
+            <div class="img-box">
+                <div id="target" class="target">
+                    <div id="iframes" class="iframes">
+                        <div class="iframe"><img src="img/comic_001.png?210219" alt="p1"></div>
+                        <div class="iframe"><img src="img/comic_002.png?210219" alt="p2"></div>
+                        <div class="iframe"><img src="img/comic_004.png?210219" alt="p4"></div>
+                        <div class="iframe"><img src="img/comic_005.png?210219" alt="p5"></div>
+                    </div>
+                    <div id="canvas-area" class="canvas-area">
+                        <canvas id="canvas" class="canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="control" id="control">
+                <h1 class="title">
+                    Gradient Map Editor
+                    for <a href="https://comicshare.net/">ComicShare</a>
+                    by <a href="http://tail.dojin.com/comicshare/">Tail</a>
+                </h1>
+
+                <div class="files">
+                    <input type="file" accept="image/*" name="file" id="file" class="file">
+                    <div class="gamma" id="gamma-area" title="標準は1 増えると明るくなり、0.9以下で暗くなる">
+                        ガンマ調整：
+                        <label><input type="range" value="1" min="0.1" max="3" step="0.1" id="gamma"
+                                   oninput="document.getElementById('output1').value=this.value"></label>
+                        <output id="output1">1</output>
+                    </div>
+                    <button id="canvas-save" class="canvas-save">save canvas</button>
+                </div>
+
+                <div class="flexbox">
+                    <div class="left">
+                        <h2 class="subtitle">パレット</h2>
+                        <div class="colors">
+                            <label><input type="color" id="color01" class="dropzone" list="comics-share" value="#000000"></label>
+                            <label><input type="color" id="color02" class="dropzone" list="comics-share" value="#191970"></label>
+                            <label><input type="color" id="color03" class="dropzone" list="comics-share" value="#191970"></label>
+                            <label><input type="color" id="color04" class="dropzone" list="comics-share" value="#191970"></label>
+                            <label><input type="color" id="color05" class="dropzone" list="comics-share" value="#ffa500"></label>
+                            <label><input type="color" id="color06" class="dropzone" list="comics-share" value="#ffa500"></label>
+                            <label><input type="color" id="color07" class="dropzone" list="comics-share" value="#ffa500"></label>
+                            <label><input type="color" id="color08" class="dropzone" list="comics-share" value="#ffffff"></label>
+                            <label><input type="color" id="color09" class="dropzone" list="comics-share" value="#ffffff"></label>
+                            <label><input type="color" id="color10" class="dropzone" list="comics-share" value="#ffffff"></label>
+                        </div>
+                        <datalist id="comics-share"></datalist>
+
+                        <div class="buttons">
+                            <button id="set">Set</button>
+                            <button id="remove">Remove</button>
+                            <button id="reset" class="right">Reset</button>
+                        </div>
+
+                        <h2 class="subtitle">カラーリスト <small>(これ以外はComicShareにありません)</small></h2>
+                        <ul id="palette" class="palette"></ul>
+                    </div>
+                    <div class="right">
+                        <h2 class="subtitle">カラーサンプル</h2>
+                        <ul id="sample" class="sample"></ul>
+                    </div>
+                </div>
+
+                <!--
+                <hr>
+                <select name="color-select" id="color-select"></select>
+                -->
+                <div class="readme">
+                    <h3 class="subtitle">これは何？</h3>
+                    <p>ComicShareで自動着色機能を利用した際の表示を、疑似確認することができます。
+                        カラーリストの色をパレットにドラッグ＆ドロップすると、色をセットします。<br>
+                    画像ファイルを選択すると、画像ファイルに対してフィルタを掛けてみることが可能です
+                        （※ファイルは何処にもアップロードされません。ローカルでのみ参照されます）</p>
+                </div>
+            </div>
+        </div>
+        <script src="lib/gradientmaps.min.js"></script>
+        <script src="gradient-map-editor.js?210219-9"></script>
     </body>
 </html>

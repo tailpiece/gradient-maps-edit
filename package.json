@@ -1,14 +1,14 @@
 {
-  "name": "project-template",
+  "name": "gradient-map-editor",
   "version": "1.0.0",
   "description": "",
   "main": "public/index.html",
   "keywords": [],
-  "author": "",
-  "license": "",
+  "author": "tail",
+  "license": "MIT",
   "scripts": {
     "dev": "webpack serve --mode development",
-    "clean": "rm public/bundle.js",
+    "clean": "rm public/gradient-map-editor.js",
     "build": "webpack --mode production"
   },
   "dependencies": {

@@ -1,7 +1,17 @@
-# project template
+# Gradient Map Editor for ComicShare
 
-内容が空のテンプレート。
-nodejsでライブリロード＆scssのbundle buildが出来る。
+ComicShareで自動着色した時の表示を、疑似確認できる
+
+
+## 状況
+
+- サンプル画像データはコミpo
+- ドラッグドロップで色変更可
+- ドラッグドロップで画像登録可
+- レスポンシブ対応
+- UA判定でiOSデバイスはファイル参照不可  
+  canvasに登録した画像に、フィルタがかからないため
+- サンプルカラー配列からstyle書き出し
 
 ## Building and running on localhost
 

@@ -1,7 +1,7 @@
 
 .cache/
 coverage/
-public/bundle.js
+public/gradient-map-editor.js
 node_modules/
 *.log
 
