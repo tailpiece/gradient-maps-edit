@@ -9,9 +9,6 @@ ComicShareで自動着色した時の表示を、疑似確認できる
 - ドラッグドロップで色変更可
 - ドラッグドロップで画像登録可
 - レスポンシブ対応
-- UA判定でiOSデバイスはファイル参照不可  
-  canvasに登録した画像に、フィルタがかからないため
-- サンプルカラー配列からstyle書き出し
 
 ## Building and running on localhost
 
@@ -24,13 +21,13 @@ npm install
 To create a production build:
 
 ```sh
-npm build
+npm run build
 ```
 
 Running
 
 ```sh
-npm dev
+npm run dev
 ```
 
 ## Credits

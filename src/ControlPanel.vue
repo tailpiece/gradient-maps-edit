@@ -8,12 +8,6 @@
 
     <div class="files">
       <input type="file" accept="image/*" name="file" ref="file" class="file" @change="changeInputImage">
-      <div class="gamma" ref="gammaArea" title="標準は1 増えると明るくなり、0.9以下で暗くなる">
-        ガンマ調整：
-        <label><input type="range" value="1" min="0.1" max="3" step="0.1" ref="gamma"></label>
-        <output ref="output1">1</output>
-      </div>
-      <button ref="canvasSave" class="canvas-save">save canvas</button>
     </div>
 
     <div class="flexbox">
