@@ -1,4 +1,5 @@
 const path = require('path');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const config = {
   entry: {
@@ -10,6 +11,10 @@ const config = {
   },
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
       {
         test: /\.js$/,
         use: 'babel-loader',
@@ -32,6 +37,15 @@ const config = {
       }
     ]
   },
+  resolve: {
+    extensions: [
+      '.js',
+      '.vue'
+    ]
+  },
+  plugins: [
+    new VueLoaderPlugin
+  ],
   //webpack-dev-server用設定
   devServer: {
     open: true, //ブラウザを自動で開く

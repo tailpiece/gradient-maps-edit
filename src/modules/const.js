@@ -239,17 +239,33 @@ export const Color = {
       //   ],
       // },
 
-      {
-        text: "if possible purple *Out of color range",
-        id: "sample-color-99",
-        category: 'comic',
-        hex: [
-          // "#000000", "#443b87", "#570080", "#963c79", "#c76352",
-          // "#ff4d70", "#ff8847", "#f78db7", "#ffca99", "#ffffff",
-          "#000000", "#1d448b", "#800080", "#e66bff", "#fbc35b",
-          "#ff69b4", "#ffd700", "#ffc0cb", "#ffe8a8", "#ffffff",
-        ],
-      },
+      // {
+      //   text: "if possible #1 *Out of color range",
+      //   id: "sample-color-97",
+      //   category: 'comic',
+      //   hex: [
+      //     "#000000", "#791a3d", "#b92d5d", "#e63b7a", "#ff8c82",
+      //     "#ff8c82", "#ffc5ab", "#f9d3e0", "#fff2d5", "#ffffff",
+      //   ],
+      // },
+      // {
+      //   text: "if possible #2 *Out of color range",
+      //   id: "sample-color-98",
+      //   category: 'comic',
+      //   hex: [
+      //     "#000000", "#5c5c5c", "#e63b7a", "#ff6250", "#ff8c82",
+      //     "#ff8c82", "#ffc5ab", "#f9d3e0", "#fff2d5", "#ffffff",
+      //   ],
+      // },
+      // {
+      //   text: "if possible #3 *Out of color range",
+      //   id: "sample-color-99",
+      //   category: 'comic',
+      //   hex: [
+      //     "#371a94", "#4169e1", "#6495ed", "#b18cfe", "#e292fe",
+      //     "#ffc0cb", "#f9d3e0", "#ffdbd8", "#fff2d5", "#ffffff",
+      //   ],
+      // },
     ],
   },
 };
