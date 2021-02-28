@@ -87,7 +87,7 @@ export default Vue.extend({
     }
   },
   mounted() {
-    this.colors = Color.ComicShareColors.Default.hex;
+    this.colors = Color.ComicShareColors.Default.hex.concat();
   },
   computed: {
     comicShareColor() {
@@ -106,7 +106,6 @@ export default Vue.extend({
      */
     updateColor(e) {
       // 変数を直接書き換えるとVueが補足しなくなるので、setで変更する
-      // this.colors[e.target.dataset.index] = e.target.value;
       this.$set(this.colors, e.target.dataset.index, e.target.value);
       this.updateGradientMap();
     },
@@ -130,7 +129,7 @@ export default Vue.extend({
      * グラデーションマップを初期化する
      */
     resetGradientMap() {
-      this._setColorValue(Color.ComicShareColors.Default.hex);
+      this._setColorValue(Color.ComicShareColors.Default.hex.concat());
       this.updateGradientMap();
     },
 
@@ -193,7 +192,6 @@ export default Vue.extend({
     changeInputImage(e) {
       this.$emit('changeImage', e.target.files);
     },
-
 
     /**
      * カラーリストのドラッグ開始

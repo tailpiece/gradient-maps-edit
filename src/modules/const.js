@@ -1,15 +1,4 @@
 export const Color = {
-  // colorMapsCodeに対応しているコード
-  // ColorMaps: [
-  //   '', 'jet', 'hot','cool','spring','summer','autumn','winter','bone',
-  //   'copper','greys','YIGnBu','greens','YIOrRd','bluered','RdBu',
-  //   'rainbow','portland','blackbody','earth','electric',
-  //   'viridis', 'inferno', 'magma', 'plasma', 'warm', 'cool',
-  //   'bathymetry', 'cdom', 'chlorophyll', 'density', 'freesurface-blue', 'freesurface-red',
-  //   'oxygen', 'par', 'phase', 'salinity', 'temperature', 'turbidity',
-  //   'velocity-blue', 'velocity-green',
-  //   // 'hsv', 'picnic', 'rainbow-soft',
-  // ],
   // ComicShareのHEXコード
   ComicShare: [
     "#CD5C5C", "#F08080", "#FF0000", "#DC143C", "#B22222", "#8B0000", "#FF7F50", "#FF6347",
@@ -28,21 +17,10 @@ export const Color = {
         "#000000",
         "#191970", "#191970", "#191970", "#ffa500",
         "#ffa500", "#ffa500", "#ffffff", "#ffffff",
-        // "#800080", "#ff6347", "#ff69b4", "#ffa500",
-        // "#ff69b4", "#ffd700", "#ffc0cb", "#dcdcdc",
         "#ffffff",
       ],
     },
     Sample: [
-      // {
-      //   text: "popular 00 *recommend",
-      //   id: "sample-color-00",
-      //   category: 'comic',
-      //   hex: [
-      //     "#000000", "#800080", "#ff6347", "#ff69b4", "#ffa500",
-      //     "#ff69b4", "#ffd700", "#ffc0cb", "#dcdcdc", "#ffffff",
-      //   ],
-      // },
       {
         text: "popular 01 *recommend",
         id: "sample-color-01",
@@ -50,8 +28,6 @@ export const Color = {
         hex: [
           "#000000", "#800080", "#ff6347", "#ff69b4", "#ffa500",
           "#ff69b4", "#ffd700", "#ffc0cb", "#dcdcdc", "#ffffff",
-          // "#000000", "#191970", "#ff1493", "#ff69b4", "#ffa500",
-          // "#ff69b4", "#ffd700", "#ffc0cb", "#dcdcdc", "#ffffff",
         ],
       },
       {
