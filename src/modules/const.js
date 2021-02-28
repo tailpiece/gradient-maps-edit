@@ -56,7 +56,7 @@ export const Color = {
       },
       {
         text: "popular 02 *recommend",
-        id: "sample-color-03",
+        id: "sample-color-02",
         category: 'comic',
         hex: [
           "#000000", "#2f4f4f", "#708090", "#cd5c5c", "#ff69b4",
@@ -65,7 +65,7 @@ export const Color = {
       },
       {
         text: "popular 03 *recommend",
-        id: "sample-color-04",
+        id: "sample-color-03",
         category: 'comic',
         hex: [
           "#000000", "#ff6347", "#ff69b4", "#ffa500", "#ff69b4",
@@ -74,7 +74,7 @@ export const Color = {
       },
       {
         text: "pale",
-        id: "sample-color-02",
+        id: "sample-color-04",
         category: 'comic',
         hex: [
           "#8b4513", "#2f4f4f", "#708090", "#808080", "#c0c0c0",
@@ -120,7 +120,7 @@ export const Color = {
       },
       {
         text: "letter 02",
-        id: "sample-color-12",
+        id: "sample-color-09",
         category: 'comic',
         hex: [
           "#000000", "#a52a2a", "#a52a2a", "#cd5c5c", "#f08080",
@@ -129,7 +129,7 @@ export const Color = {
       },
       {
         text: "tropical",
-        id: "sample-color-13",
+        id: "sample-color-10",
         category: 'comic',
         hex: [
           "#000000", "#800080", "#ff1493", "#ffc0cb", "#6b8e23",
@@ -138,7 +138,7 @@ export const Color = {
       },
       {
         text: "samba",
-        id: "sample-color-14",
+        id: "sample-color-11",
         category: 'comic',
         hex: [
           "#000000", "#800080", "#ff0000", "#ff1493", "#ff6347",
@@ -148,7 +148,7 @@ export const Color = {
 
       {
         text: "pink",
-        id: "sample-color-10",
+        id: "sample-color-12",
         category: 'comic',
         hex: [
           "#000000", "#8b0000", "#b22222", "#dc143c", "#cd5c5c",
@@ -157,7 +157,7 @@ export const Color = {
       },
       {
         text: "blue",
-        id: "sample-color-11",
+        id: "sample-color-13",
         category: 'comic',
         hex: [
           "#000000", "#191970", "#00008b", "#0000ff", "#4169e1",
@@ -167,105 +167,69 @@ export const Color = {
 
       {
         text: "pseudo 2color",
-        id: "sample-color-09",
+        id: "sample-color-14",
         category: 'illustration',
         hex: [
           "#0000ff", "#4169e1", "#6495ed", "#ff69b4", "#ffc0cb",
           "#ffc0cb", "#ffc0cb", "#dcdcdc", "#ffffff", "#ffffff",
         ],
+        title: 'なんちゃって２色',
       },
 
-      // {
-      //   text: "2tone red (no white)",
-      //   id: "sample-color-30",
-      //   category: 'illustration',
-      //   hex: [
-      //     "#000000", "#000000", "#b22222", "#b22222", "#ff0000",
-      //     "#cd5c5c", "#f08080", "#ffc0cb", "#ffc0cb", "#ffc0cb",
-      //   ],
-      // },
-      // {
-      //   text: "2tone peach (no white)",
-      //   id: "sample-color-31",
-      //   category: 'illustration',
-      //   hex: [
-      //     "#000000", "#000000", "#dc143c", "#dc143c", "#cd5c5c",
-      //     "#cd5c5c", "#f08080", "#ffc0cb", "#ffc0cb", "#ffc0cb",
-      //   ],
-      // },
-      // {
-      //   text: "2tone orange (no white)",
-      //   id: "sample-color-34",
-      //   category: 'illustration',
-      //   hex: [
-      //     "#000000", "#000000", "#ff4500", "#ff4500", "#ff6347",
-      //     "#ffa500", "#ffa500", "#ffd700", "#ffd700", "#ffd700",
-      //   ],
-      // },
-      // {
-      //   text: "2tone brown (no white)",
-      //   id: "sample-color-35",
-      //   category: 'illustration',
-      //   hex: [
-      //     "#000000", "#000000", "#800000", "#800000", "#d2691e",
-      //     "#ffa500", "#ffa500", "#ffd700", "#ffd700", "#ffd700",
-      //   ],
-      // },
-      // {
-      //   text: "2tone green (no white)",
-      //   id: "sample-color-33",
-      //   category: 'illustration',
-      //   hex: [
-      //     "#000000", "#000000", "#006400", "#006400", "#008000",
-      //     "#6b8e23", "#6b8e23", "#ffd700", "#ffd700", "#ffd700",
-      //   ],
-      // },
-      // {
-      //   text: "2tone blue (no white)",
-      //   id: "sample-color-32",
-      //   category: 'illustration',
-      //   hex: [
-      //     "#000000", "#000000", "#191970", "#191970", "#0000ff",
-      //     "#4169e1", "#4169e1", "#6495ed", "#6495ed", "#6495ed",
-      //   ],
-      // },
-      // {
-      //   text: "2tone slate (no white)",
-      //   id: "sample-color-36",
-      //   category: 'illustration',
-      //   hex: [
-      //     "#000000", "#000000", "#2f4f4f", "#2f4f4f", "#708090",
-      //     "#708090", "#a9a9a9", "#d3d3d3", "#d3d3d3", "#d3d3d3",
-      //   ],
-      // },
+      {
+        text: "fake gold",
+        id: "sample-color-20",
+        category: 'illustration',
+        hex: [
+          "#000000", "#ff7f50", "#ffa500", "#ffc0cb", "#ffd700",
+          "#ffc0cb", "#ffd700", "#ffc0cb", "#ffff00", "#ffffff",
+        ],
+        title: 'なんちゃってゴールド。作品によってはこれのほうが読みやすい場合も',
+      },
 
-      // {
-      //   text: "if possible #1 *Out of color range",
-      //   id: "sample-color-97",
-      //   category: 'comic',
-      //   hex: [
-      //     "#000000", "#791a3d", "#b92d5d", "#e63b7a", "#ff8c82",
-      //     "#ff8c82", "#ffc5ab", "#f9d3e0", "#fff2d5", "#ffffff",
-      //   ],
-      // },
-      // {
-      //   text: "if possible #2 *Out of color range",
-      //   id: "sample-color-98",
-      //   category: 'comic',
-      //   hex: [
-      //     "#000000", "#5c5c5c", "#e63b7a", "#ff6250", "#ff8c82",
-      //     "#ff8c82", "#ffc5ab", "#f9d3e0", "#fff2d5", "#ffffff",
-      //   ],
-      // },
-      // {
-      //   text: "if possible #3 *Out of color range",
-      //   id: "sample-color-99",
-      //   category: 'comic',
-      //   hex: [
-      //     "#371a94", "#4169e1", "#6495ed", "#b18cfe", "#e292fe",
-      //     "#ffc0cb", "#f9d3e0", "#ffdbd8", "#fff2d5", "#ffffff",
-      //   ],
-      // },
+      {
+        text: "fake silver",
+        id: "sample-color-21",
+        category: 'illustration',
+        hex: [
+          "#a9a9a9", "#c0c0c0", "#dcdcdc", "#d3d3d3", "#ffffff",
+          "#c0c0c0", "#dcdcdc", "#c0c0c0", "#dcdcdc", "#ffffff",
+        ],
+        title: 'なんちゃってシルバー。0番はもうちょっと濃い色のほうが読みやすいです・・・',
+      },
+
+      {
+        text: "fake grayscale",
+        id: "sample-color-30",
+        category: 'comic',
+        hex: [
+          "#000000", "#696969", "#808080", "#c0c0c0", "#c0c0c0",
+          "#d3d3d3", "#dcdcdc", "#dcdcdc", "#fffafa", "#ffffff",
+        ],
+        title: 'グレースケール化というよりは、',
+      },
+
+      {
+        text: "white and black",
+        id: "sample-color-31",
+        category: 'illustration',
+        hex: [
+          "#ffffff", "#fffafa", "#dcdcdc", "#d3d3d3", "#c0c0c0",
+          "#a9a9a9", "#808080", "#696969", "#696969", "#000000",
+        ],
+        title: 'ComicShareの場合、白黒反転したほうが早いです',
+      },
+
+      {
+        text: "popular 04",
+        id: "sample-color-15",
+        category: 'comic',
+        hex: [
+          "#000000", "#ff1493", "#ff4500", "#ff69b4", "#ffa500",
+          "#ff69b4", "#ffc0cb", "#ffd700", "#ffc0cb", "#ffffff",
+        ],
+        title: 'ほぼ01や03と変わらないのですが、好みで',
+      },
     ],
   },
 };
