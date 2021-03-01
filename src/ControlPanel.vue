@@ -7,7 +7,7 @@
     </h1>
 
     <div class="files">
-      <input type="file" accept="image/*" name="file" ref="file" class="file" @change="changeInputImage">
+      <input type="file" accept="image/*" name="file" class="file" @change="changeInputImage">
     </div>
 
     <div class="flexbox">
@@ -16,7 +16,6 @@
         <div class="palette">
           <label v-for="(color, i) in colors">
             <input type="color"
-                   :ref="`color${('0' + i).slice(-2)}`"
                    :value="color"
                    :key="`color${i}`"
                    :data-index="i"
@@ -32,13 +31,13 @@
         </datalist>
 
         <div class="buttons">
-          <button ref="set" @click="updateGradientMap">Set</button>
-          <button ref="remove" @click="removeGradientMap">Remove</button>
-          <button ref="reset" class="right" @click="resetGradientMap">Reset</button>
+          <button @click="updateGradientMap">Set</button>
+          <button @click="removeGradientMap">Remove</button>
+          <button @click="resetGradientMap" class="right">Reset</button>
         </div>
 
         <h2 class="subtitle">カラーリスト <small>(これ以外はComicShareにありません)</small></h2>
-        <ul ref="colorList" class="color-list">
+        <ul class="color-list">
           <li v-for="(color, i) in comicShareColor"
               :title="color" :data-hex="color"
               :style="`background-color: ${color}`"
@@ -52,14 +51,14 @@
       </div>
       <div class="right">
         <h2 class="subtitle">カラーサンプル</h2>
-        <ul ref="sample" class="sample">
+        <ul class="sample">
           <li v-for="(color, i) in ComicShareColorsSample"
               :id="color.id"
               :style="gradientStyle(color.hex)"
               :title="color.title"
-              class="sample-color"
               :key="'colorSample' + i"
               @click="sampleSet(color.id)"
+              class="sample-color"
           >{{color.text}}</li>
         </ul>
       </div>
@@ -234,3 +233,126 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+
+  .title {
+    margin: 40px 0 16px;
+    padding: 0;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .palette {
+    margin: 0 0 8px;
+    input {
+      width: calc((100% - 10px) / 5);
+      height: 30px;
+      padding: 0;
+      cursor: pointer;
+      margin: 0 2px 2px 0;
+      box-sizing: border-box;
+    }
+  }
+
+  .buttons {
+    margin: 0 0 16px;
+    display: flex;
+    flex-wrap: wrap;
+
+    button {
+      margin: 0 8px 0 0;
+      cursor: pointer;
+    }
+
+    .right {
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+
+  .files{
+    margin: 0 0 16px;
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+
+    .file {
+      width: 100%;
+      margin: 0 0 8px;
+      padding-top: 8px;
+    }
+    .gamma {
+      width: 100%;
+      display: none;
+      font-size: 12px;
+    }
+    .canvas-save {
+      display: none;
+    }
+  }
+
+  .color-list {
+    margin: 0 0 16px;
+    padding: 16px 12px 8px;
+    list-style: none;
+    background: #fff;
+    box-sizing: border-box;
+    li {
+      margin: 0 4px 0 0;
+      padding: 0;
+      //width: 11%;
+      width: calc((100% - 32px) / 8);
+      height: 22px;
+      display: inline-block;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      cursor: grab;
+      &:hover {
+        opacity: .7;
+      }
+      &:active {
+        cursor: grabbing;
+      }
+    }
+  }
+
+  .sample {
+    margin: 0 0 16px;
+    padding: 12px 12px 8px;
+    list-style: none;
+    background: #fff;
+    box-sizing: border-box;
+    li {
+      margin: 0 4px 4px 0;
+      padding: 4px 8px;
+      width: 100%;
+      font-size: 12px;
+      display: block;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      text-align: right;
+      cursor: pointer;
+      &:hover {
+        opacity: .7;
+      }
+    }
+  }
+
+  .subtitle {
+    margin: 0 0 6px;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  .readme {
+    p {
+      font-size: 12px;
+      margin: 0 0 8px;
+      padding: 0;
+    }
+  }
+</style>

@@ -4,6 +4,7 @@ coverage/
 public/gradient-map-editor.js
 public/gradient-map-editor.js.LICENSE.txt
 node_modules/
+src/_*
 *.log
 
 # OS generated files
