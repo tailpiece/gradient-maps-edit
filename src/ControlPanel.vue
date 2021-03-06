@@ -14,40 +14,28 @@
       <div class="left">
         <h2 class="subtitle">パレット</h2>
         <div class="palette">
-          <label v-for="(color, i) in colors">
-            <input type="color"
-                   :value="color"
-                   :key="`color${i}`"
-                   :data-index="i"
-                   @change="updateColor"
-                   @dragover="dragover"
-                   @dragleave="dragend"
-                   @drop.stop="drop"
-                   class="dropzone" list="comics-share">
-          </label>
+          <div class="touch">
+            <v-swatches
+                v-for="(_, i) in colors"
+                v-model="colors[i]"
+                @input="updateGradientMap"
+                :key="`colors${i}`"
+                :swatches="comicShareColor"
+                :spacing-size="4"
+                :show-border="true"
+                :swatch-style="{ width: '21px', height: '21px', borderRadius: '4px', marginBottom: '0' }"
+                :trigger-style="{ width: '59px', height: '30px', borderRadius: '4px', margin: '0', border: '1px solid #000' }"
+                :wrapper-style="{ width: '200px' }"
+                class="color"
+            />
+          </div>
         </div>
-        <datalist id="comics-share">
-          <option v-for="(color, i) in comicShareColor" :value="color" :key="'colorPaletteList' + i"></option>
-        </datalist>
 
         <div class="buttons">
           <button @click="updateGradientMap">Set</button>
           <button @click="removeGradientMap">Remove</button>
           <button @click="resetGradientMap" class="right">Reset</button>
         </div>
-
-        <h2 class="subtitle">カラーリスト <small>(これ以外はComicShareにありません)</small></h2>
-        <ul class="color-list">
-          <li v-for="(color, i) in comicShareColor"
-              :title="color" :data-hex="color"
-              :style="`background-color: ${color}`"
-              :key="'colorList' + i"
-              @dragstart="dragstart"
-              @dragend="dragend"
-              draggable="true"
-              class="drag-and-drop"
-          ></li>
-        </ul>
       </div>
       <div class="right">
         <h2 class="subtitle">カラーサンプル</h2>
@@ -76,13 +64,19 @@
 <script>
 import Vue from "vue";
 import {Color} from "./modules/const";
+import VSwatches from 'vue-swatches'
 import "./styles.scss";
+import "vue-swatches/dist/vue-swatches.css"
 
 export default Vue.extend({
+  components: {
+    VSwatches
+  },
   data: function() {
     return {
       colors: [],
       ratio: [15, 35, 45, 60, 70, 75, 85, 90, 95],
+      // ratio: [15, 35, 45, 55, 65, 75, 85, 90, 95],
     }
   },
   mounted() {
@@ -100,15 +94,6 @@ export default Vue.extend({
     },
   },
   methods: {
-    /**
-     * カラーが変更された場合、this.colorsの値を更新し、グラデーションマップを更新する
-     */
-    updateColor(e) {
-      // 変数を直接書き換えるとVueが補足しなくなるので、setで変更する
-      this.$set(this.colors, e.target.dataset.index, e.target.value);
-      this.updateGradientMap();
-    },
-
     /**
      * 画像にグラデーションマップを適用する
      */
@@ -191,51 +176,11 @@ export default Vue.extend({
     changeInputImage(e) {
       this.$emit('changeImage', e.target.files);
     },
-
-    /**
-     * カラーリストのドラッグ開始
-     * @param e event
-     */
-    dragstart(e){
-      e.dataTransfer.setData("text", e.target.dataset.hex);
-      e.target.style.opacity = ".5";
-      this.$emit('dragColor', true);
-    },
-
-    /**
-     * カラーリストのドラッグを終えた、またはinput.colorの上から離れた
-     * @param e event
-     */
-    dragend(e) {
-      e.target.style.opacity = "";
-    },
-
-    /**
-     * カラーリストをドラッグした状態で、input.colorの上に乗った
-     * @param e event
-     */
-    dragover(e) {
-      e.preventDefault();
-      e.target.style.opacity = ".5";
-    },
-
-    /**
-     * カラーリストをドラッグした状態で、input.colorの上でドロップした
-     * @param e event
-     */
-    drop(e) {
-      e.preventDefault();
-      e.target.style.opacity = "";
-      this.$emit('dragColor', false);
-      this.$set(this.colors, e.target.dataset.index, e.dataTransfer.getData("text"));
-      this.updateGradientMap();
-    },
   },
 });
 </script>
 
 <style lang="scss" scoped>
-
   .title {
     margin: 40px 0 16px;
     padding: 0;
@@ -245,12 +190,11 @@ export default Vue.extend({
 
   .palette {
     margin: 0 0 8px;
-    input {
+    .color {
       width: calc((100% - 10px) / 5);
-      height: 30px;
       padding: 0;
       cursor: pointer;
-      margin: 0 2px 2px 0;
+      margin: 0 2px 0 0;
       box-sizing: border-box;
     }
   }
@@ -302,7 +246,6 @@ export default Vue.extend({
     li {
       margin: 0 4px 0 0;
       padding: 0;
-      //width: 11%;
       width: calc((100% - 32px) / 8);
       height: 22px;
       display: inline-block;

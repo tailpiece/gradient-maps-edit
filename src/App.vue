@@ -24,6 +24,9 @@
         @remove="removeGradientMap"
         @changeImage="changeInputImage"
         @dragColor="dragColor"
+        @open="setSwatchOpenState(true)"
+        @close="setSwatchOpenState(false)"
+        :class="[{'is-swatch-open':swatchOpen}]"
         class="control-panel"
     />
     <div class="toggle">
@@ -50,6 +53,7 @@ export default Vue.extend({
       colorDragged: false,
       demo: true,
       menuOpen: true,
+      swatchOpen: false,
     }
   },
   mounted() {
@@ -71,6 +75,10 @@ export default Vue.extend({
   },
   methods: {
 
+    setSwatchOpenState(status) {
+      this.swatchOpen = status;
+    },
+
     calculateWindowWidth() {
       this.canvasWidth = this.$refs.canvasArea.clientWidth - 32;
       this.canvasHeight = this.$refs.canvasArea.clientHeight - 32;
@@ -82,8 +90,8 @@ export default Vue.extend({
      */
     updateGradientMap(gradient) {
       GradientMaps.applyGradientMap(this.$refs.iframes, gradient);
-
-      this.$refs.canvas.style.filter = 'url(#filter-0)';
+      GradientMaps.applyGradientMap(this.$refs.canvas, gradient);
+      // this.$refs.canvas.style.filter = 'url(#filter-0)';
       this.updateCanvas();
     },
 
@@ -91,8 +99,10 @@ export default Vue.extend({
      * グラデーションマップを解除する
      */
     removeGradientMap() {
-      this.$refs.iframes.style.filter = '';
-      this.$refs.canvas.style.filter = '';
+      GradientMaps.removeGradientMap(this.$refs.iframes);
+      GradientMaps.removeGradientMap(this.$refs.canvas);
+      // this.$refs.iframes.style.filter = '';
+      // this.$refs.canvas.style.filter = '';
     },
 
     /**
@@ -203,7 +213,7 @@ export default Vue.extend({
       img.onload = () => {
         this.$refs.canvas.width = img.width;
         this.$refs.canvas.height = img.height;
-        this.ctx.drawImage(img, 20, 20);
+        this.ctx.drawImage(img, 0, 0);
       }
     },
 
@@ -260,13 +270,14 @@ export default Vue.extend({
       justify-content: space-around;
       align-items: center;
       box-sizing: border-box;
-      padding: 16px 16px 0;
+      padding: 0;
       flex-direction: row-reverse;
       width: 100%;
       min-width: 320px;
       height: 100%;
       overflow: auto;
-      transition: width 0.3s cubic-bezier(.175, .885, .32, 1.275);
+      //transition: width 0.3s cubic-bezier(.175, .885, .32, 1.275);
+      transition: width 0.3s ease-in-out;
 
       .menu-open & {
         width: calc(100% - 368px);
@@ -297,7 +308,6 @@ export default Vue.extend({
 
     .canvas-area {
       display: flex;
-      padding-bottom: 12px;
     }
   }
 
@@ -312,9 +322,13 @@ export default Vue.extend({
     padding: 16px;
     box-sizing: border-box;
     transform: translateX(369px);
-    transition: transform 0.3s cubic-bezier(.175, .885, .32, 1.275);
+    //transition: transform 0.3s cubic-bezier(.175, .885, .32, 1.275);
+    transition: transform 0.3s ease-in-out;
     .menu-open & {
       transform: translateX(0px);
+    }
+    &.is-swatch-open {
+      overflow: visible;
     }
   }
 
@@ -350,19 +364,25 @@ export default Vue.extend({
         position: static;
         width: 80%;
         margin: 0 auto;
+
         .iframe:nth-child(n + 3) {
           display: none;
         }
       }
       .canvas-area {
-        margin: -27px auto 0;
+        margin: 0 auto;
       }
       .canvas {
-        margin: -22px auto 0;
+        margin: 0 auto;
         max-width: 100%;
-        max-height: 90vh;
+        max-height: 100%;
       }
     }
+
+    .toggle {
+      display: none;
+    }
+
     .files {
       .gamma {
         display: none !important;
@@ -381,8 +401,14 @@ export default Vue.extend({
 
   .is-smartphone {
     @include sp();
+    .img-box {
+      .iframes {
+        .iframe:nth-child(n + 3) {
+          display: none;
+        }
+      }
+    }
   }
-
   .is-ios {
     .img-box {
       .iframes {
@@ -393,14 +419,7 @@ export default Vue.extend({
     }
   }
 
-  @media screen and (max-width:1024px) {
-    .is-ios {
-      @include sp();
-    }
-  }
-
-  @media screen and (max-width:1024px) and (min-width:480px) {
-    .is-smartphone,
+  @media screen and (max-width:1366px) and (orientation: landscape) {
     .is-ios {
       .flexbox {
         display: flex;
@@ -414,23 +433,17 @@ export default Vue.extend({
           width: 40%;
         }
       }
-      .toggle {
-        display: none;
-      }
     }
   }
 
-  @media screen and (max-width:1023px) and (min-width:480px) {
-    .is-smartphone,
+  @media screen and (max-width:1023px) {
     .is-ios {
+      @include sp();
       .img-box {
         .canvas-area,
         .iframes {
           width: 100%;
         }
-      }
-      .toggle {
-        display: none;
       }
     }
   }

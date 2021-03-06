@@ -169,7 +169,7 @@ export const Color = {
         id: "sample-color-21",
         category: 'illustration',
         hex: [
-          "#a9a9a9", "#c0c0c0", "#dcdcdc", "#d3d3d3", "#ffffff",
+          "#808080", "#c0c0c0", "#dcdcdc", "#d3d3d3", "#ffffff",
           "#c0c0c0", "#dcdcdc", "#c0c0c0", "#dcdcdc", "#ffffff",
         ],
         title: 'なんちゃってシルバー。0番はもうちょっと濃い色のほうが読みやすいです・・・',
