@@ -29,6 +29,7 @@ export const Color = {
           "#000000", "#800080", "#ff6347", "#ff69b4", "#ffa500",
           "#ff69b4", "#ffd700", "#ffc0cb", "#dcdcdc", "#ffffff",
         ],
+        title: '汎用色。これに限らず全てのプリセットでFFd700を入れていますが、黄色が目立つのがイヤな場合は、#dcdcdcに置き換えると良いかも',
       },
       {
         text: "popular 02 *recommend",
@@ -123,7 +124,7 @@ export const Color = {
       },
 
       {
-        text: "pink",
+        text: "red",
         id: "sample-color-12",
         category: 'comic',
         hex: [
@@ -149,7 +150,7 @@ export const Color = {
           "#0000ff", "#4169e1", "#6495ed", "#ff69b4", "#ffc0cb",
           "#ffc0cb", "#ffc0cb", "#dcdcdc", "#ffffff", "#ffffff",
         ],
-        title: 'なんちゃって２色',
+        title: 'なんちゃって２色。ComicShare標準が1-3/4-6で固まっているので、この塊で色をまとめると良いかも',
       },
 
       {
@@ -157,10 +158,10 @@ export const Color = {
         id: "sample-color-20",
         category: 'illustration',
         hex: [
-          "#000000", "#ff7f50", "#ffa500", "#ffc0cb", "#ffd700",
-          "#ffc0cb", "#ffd700", "#ffc0cb", "#ffff00", "#ffffff",
+          "#000000", "#ff7f50", "#ffa500", "#ffff00", "#ffa500",
+          "#ffffff", "#ffff00", "#ffc0cb", "#ffff00", "#ffffff",
         ],
-        title: 'なんちゃってゴールド。作品によってはこれのほうが読みやすい場合も',
+        title: 'なんちゃってゴールド',
       },
 
       {
@@ -168,7 +169,7 @@ export const Color = {
         id: "sample-color-21",
         category: 'illustration',
         hex: [
-          "#a9a9a9", "#c0c0c0", "#dcdcdc", "#d3d3d3", "#ffffff",
+          "#808080", "#c0c0c0", "#dcdcdc", "#d3d3d3", "#ffffff",
           "#c0c0c0", "#dcdcdc", "#c0c0c0", "#dcdcdc", "#ffffff",
         ],
         title: 'なんちゃってシルバー。0番はもうちょっと濃い色のほうが読みやすいです・・・',
@@ -182,7 +183,7 @@ export const Color = {
           "#000000", "#696969", "#808080", "#c0c0c0", "#c0c0c0",
           "#d3d3d3", "#dcdcdc", "#dcdcdc", "#fffafa", "#ffffff",
         ],
-        title: 'グレースケール化というよりは、',
+        title: 'ComicShareで使える色でグレー化しているので、トーンが異なります',
       },
 
       {
