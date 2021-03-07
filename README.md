@@ -1,33 +1,26 @@
 # Gradient Map Editor for ComicShare
 
-ComicShareで自動着色した時の表示を、疑似確認できる
-
-
-## 状況
-
-- サンプル画像データはコミpo
-- ドラッグドロップで色変更可
-- ドラッグドロップで画像登録可
-- レスポンシブ対応
+ComicShareで自動着色した時の表示を、疑似確認  
+https://tailpiece.github.io/gradient-maps-edit/
 
 ## Building and running on localhost
 
 First install dependencies:
 
 ```sh
-npm install
+yarn install
 ```
 
 To create a production build:
 
 ```sh
-npm run build
+yarn run build
 ```
 
 Running
 
 ```sh
-npm run dev
+yarn run dev
 ```
 
 ## Credits
