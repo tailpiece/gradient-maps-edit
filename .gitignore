@@ -1,8 +1,8 @@
 
 .cache/
 coverage/
-public/gradient-map-editor.js
-public/gradient-map-editor.js.LICENSE.txt
+docs/gradient-map-editor.js
+docs/gradient-map-editor.js.LICENSE.txt
 node_modules/
 src/_*
 *.log
