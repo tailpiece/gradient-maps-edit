@@ -3,7 +3,8 @@
   "version": "1.0.3",
   "description": "",
   "main": "docs/index.html",
-  "author": "tail",
+  "author": "Tail",
+  "license": "MIT",
   "scripts": {
     "dev": "webpack serve --mode development",
     "build": "webpack --mode production"
