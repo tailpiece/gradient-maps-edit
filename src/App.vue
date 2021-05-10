@@ -89,8 +89,9 @@ export default Vue.extend({
      * 画像にグラデーションマップを適用する
      */
     updateGradientMap(gradient) {
-      GradientMaps.applyGradientMap(this.$refs.iframes, gradient);
-      GradientMaps.applyGradientMap(this.$refs.canvas, gradient);
+      const gradients = 'transparent 0%, ' + gradient;
+      GradientMaps.applyGradientMap(this.$refs.iframes, gradients);
+      GradientMaps.applyGradientMap(this.$refs.canvas, gradients);
       this.updateCanvas();
     },
 
