@@ -3,7 +3,7 @@
     <h1 class="title">
       Gradient Map Editor
       for <a href="https://comicshare.net/">ComicShare</a>
-      by <a href="http://tail.dojin.com/comicshare/">Tail</a>
+      by <a href="https://tailpiece.dev/">Tail</a>
     </h1>
 
     <div class="files">

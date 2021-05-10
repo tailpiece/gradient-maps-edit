@@ -91,7 +91,6 @@ export default Vue.extend({
     updateGradientMap(gradient) {
       GradientMaps.applyGradientMap(this.$refs.iframes, gradient);
       GradientMaps.applyGradientMap(this.$refs.canvas, gradient);
-      // this.$refs.canvas.style.filter = 'url(#filter-0)';
       this.updateCanvas();
     },
 
