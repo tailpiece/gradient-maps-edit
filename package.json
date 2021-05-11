@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
-    "@babel/preset-env": "^7.12.16",
+    "@babel/preset-env": "^7.14.1",
     "babel-loader": "^8.2.2",
     "colormap": "^2.3.2",
     "css-loader": "^5.2.4",
