@@ -23,7 +23,7 @@
     "colormap": "^2.3.2",
     "css-loader": "^5.2.4",
     "node-sass": "^6.0.0",
-    "sass-loader": "^11.1.0",
+    "sass-loader": "^12.1.0",
     "style-loader": "^2.0.0",
     "vue-loader": "^15.9.7",
     "vue-template-compiler": "^2.6.12",
