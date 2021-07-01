@@ -17,7 +17,7 @@
     "vue-swatches": "^2.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.0",
+    "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.1",
     "babel-loader": "^8.2.2",
     "colormap": "^2.3.2",
