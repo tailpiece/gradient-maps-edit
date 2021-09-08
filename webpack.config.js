@@ -44,7 +44,7 @@ const config = {
     ]
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin
   ],
   //webpack-dev-server用設定
   devServer: {

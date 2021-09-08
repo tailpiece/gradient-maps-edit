@@ -1,6 +1,6 @@
 {
   "name": "gradient-map-editor",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "docs/index.html",
   "author": "Tail",
@@ -13,7 +13,7 @@
     "bootstrap": "^4.6.0",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
-    "vue": "^2.6.12",
+    "vue": "^2.6.14",
     "vue-swatches": "^2.1.1"
   },
   "devDependencies": {
@@ -26,7 +26,7 @@
     "sass-loader": "^12.0.1",
     "style-loader": "^3.2.1",
     "vue-loader": "^15.9.8",
-    "vue-template-compiler": "^2.6.12",
+    "vue-template-compiler": "^2.6.14",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.1.1"
