@@ -44,14 +44,17 @@ const config = {
     ]
   },
   plugins: [
-    new VueLoaderPlugin
+    new VueLoaderPlugin()
   ],
   //webpack-dev-server用設定
   devServer: {
-    open: true, //ブラウザを自動で開く
-    openPage: "index.html", //自動で指定したページを開く
-    contentBase: path.join(__dirname, 'docs'), // HTML等コンテンツのルートディレクトリ
-    watchContentBase: true, //コンテンツの変更監視をする
+    open: {
+      target: "index.html", //自動で指定したページを開く
+    },
+    static: {
+      directory: path.join(__dirname, 'docs'), // HTML等コンテンツのルートディレクトリ
+      watch: true, //コンテンツの変更監視をする
+    },
     port: 3000, // ポート番号
   }
 };
