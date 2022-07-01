@@ -24,7 +24,7 @@
     "babel-loader": "^8.2.2",
     "colormap": "^2.3.2",
     "css-loader": "^6.2.0",
-    "eslint": "^8.5.0",
+    "eslint": "^8.18.0",
     "eslint-plugin-vue": "^8.2.0",
     "node-sass": "^7.0.0",
     "sass-loader": "^12.0.1",
