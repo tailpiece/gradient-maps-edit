@@ -31,6 +31,11 @@ jobs:
             exit 0
           fi
 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       # topic/dependabotがあればtopic/dependabotを使う
       - name: Checkout code
         run: |
