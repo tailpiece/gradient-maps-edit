@@ -31,7 +31,7 @@ jobs:
             exit 0
           fi
 
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -68,12 +68,9 @@ jobs:
                 }
               }
             }
-          variables: |
-            {
-              "owner": "${{ github.repository_owner }}",
-              "repo": "${{ github.event.repository.name }}",
-              "prNumber": "${{ github.event.inputs.pr_number }}"
-            }
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.repository }}
+          prNumber: ${{ github.event.inputs.pr_number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
