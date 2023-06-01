@@ -85,13 +85,17 @@ jobs:
       - name: set output pr_ref
         if: github.event_name == 'workflow_dispatch'
         run: |
+          echo "update-type=${{ steps.metadata.outputs.update-type }}" >> $GITHUB_ENV
+          echo "dependency-type=${{ steps.metadata.outputs.dependency-type }}" >> $GITHUB_ENV
+          echo "url=${{ github.event.pull_request.html_url }}" >> $GITHUB_ENV
+          echo "title=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
           echo "ref=${{ fromJson(steps.pr_data.outputs.data).repository.pullRequest.headRefName }}" >> $GITHUB_ENV
 
       # dependabot -----------------------------------------------------
       # PRのmetadataを取得する
       - name: Dependabot metadata (dependabot)
         if: github.event_name != 'workflow_dispatch'
-        id: metadata
+        id: metadata2
         uses: dependabot/fetch-metadata@v1.3.5
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -99,10 +103,11 @@ jobs:
       # 必要なデータを出力する(pr_data)
       - name: set output pr_data (dependabot)
         if: github.event_name != 'workflow_dispatch'
-        id: pr_data
         run: |
-          echo "html_url=${{ github.event.pull_request.html_url }}" >> $GITHUB_OUTPUT
-          echo "title=${{ github.event.pull_request.title }}" >> $GITHUB_OUTPUT
+          echo "update-type=${{ steps.metadata2.outputs.update-type }}" >> $GITHUB_ENV
+          echo "dependency-type=${{ steps.metadata2.outputs.dependency-type }}" >> $GITHUB_ENV
+          echo "url=${{ github.event.pull_request.html_url }}" >> $GITHUB_ENV
+          echo "title=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
           echo "ref=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
 
       # 共通 -----------------------------------------------------
@@ -116,13 +121,13 @@ jobs:
 
       - name: Approve & enable auto-merge for Dependabot PR
         if: |
-          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
-          (steps.metadata.outputs.update-type == 'version-update:semver-minor' && steps.metadata.outputs.dependency-type == 'direct:development')
+          env.update-type == 'version-update:semver-patch' ||
+          (env.update-type == 'version-update:semver-minor' && env.dependency-type == 'direct:development')
         run: |
           gh pr review --approve "$PR_URL"
           gh pr edit "$PR_URL" -t "(auto merged) $PR_TITLE"
           gh pr merge --merge "$PR_URL"
         env:
-          PR_URL: ${{ steps.pr_data.outputs.html_url }}
-          PR_TITLE: ${{ steps.pr_data.outputs.title }}
+          PR_URL: ${{ env.url }}
+          PR_TITLE: ${{ env.title }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
