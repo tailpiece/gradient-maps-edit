@@ -31,11 +31,18 @@ jobs:
             exit 0
           fi
 
+      # topic/dependabotがあればtopic/dependabotを使う
       - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          ref: 'topic/dependabot'
-          fetch-depth: 0
+        run: |
+          BRANCH_NAME='topic/dependabot'
+          git fetch origin $BRANCH_NAME || true
+          if git rev-parse --verify $BRANCH_NAME; then
+            echo "Branch exists"
+            git checkout $BRANCH_NAME
+          else
+            echo "Branch does not exist, checkout default branch"
+            git checkout
+          fi
 
       # workflow_dispatch -----------------------------------------------------
       # workflow_dispatchで指定されたPRがdependabotによって作成されたものかを確認する
