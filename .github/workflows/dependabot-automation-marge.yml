@@ -72,7 +72,7 @@ jobs:
             exit 1
           fi
 
-      # workflow_dispatchで指定されたPRのmetadataを取得する
+      # PRのmetadataを取得する (workflow_dispatch)
       - name: Dependabot metadata
         id: metadata
         if: github.event_name == 'workflow_dispatch'
@@ -87,8 +87,8 @@ jobs:
         run: |
           echo "update-type=${{ steps.metadata.outputs.update-type }}" >> $GITHUB_ENV
           echo "dependency-type=${{ steps.metadata.outputs.dependency-type }}" >> $GITHUB_ENV
-          echo "url=${{ github.event.pull_request.html_url }}" >> $GITHUB_ENV
-          echo "title=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
+          echo "url=${{ steps.pr_data.outputs.html_url }}" >> $GITHUB_ENV
+          echo "title=${{ steps.pr_data.outputs.title }}" >> $GITHUB_ENV
           echo "ref=${{ fromJson(steps.pr_data.outputs.data).repository.pullRequest.headRefName }}" >> $GITHUB_ENV
 
       # dependabot -----------------------------------------------------
