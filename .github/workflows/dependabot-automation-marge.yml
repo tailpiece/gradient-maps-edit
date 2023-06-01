@@ -57,7 +57,7 @@ jobs:
         uses: octokit/graphql-action@v2.x
         with:
           query: |
-            query ($owner: String!, $repo: String!, $prNumber: Int!) {
+            query ($owner: String, $repo: String, $prNumber: Int) {
               repository(owner: $owner, name: $repo) {
                 pullRequest(number: $prNumber) {
                   author {
