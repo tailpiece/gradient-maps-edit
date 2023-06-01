@@ -53,7 +53,6 @@ jobs:
       # workflow_dispatchで指定されたPRがdependabotではない場合はエラー終了する
       - name: Check if PR was created by dependabot
         if: github.event_name == 'workflow_dispatch'
-        id: check_author
         run: |
           if [[ "${{ fromJson(steps.pr_data.outputs.data).repository.pullRequest.author.login }}" != "dependabot[bot]" ]]; then
             echo "PR was not created by Dependabot. Exiting..."
@@ -84,7 +83,6 @@ jobs:
       # workflow_dispatchで指定されたPRがdependabotではない場合はエラー終了する
       - name: Check if PR was created by dependabot
         if: github.event_name == 'workflow_dispatch'
-        id: check_author
         run: |
           if [[ "${{ fromJson(steps.pr_data.outputs.data).repository.pullRequest.author.login }}" != "dependabot[bot]" ]]; then
             echo "PR was not created by Dependabot. Exiting..."
