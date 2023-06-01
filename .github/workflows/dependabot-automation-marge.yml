@@ -1,150 +1,36 @@
-name: Dependabot automation merge
+name: Dependabot automation
 
 on:
-  # Dependabot が作成した PR に対してのみ実行する
   pull_request:
     types:
       - opened
-      - synchronize
-  workflow_dispatch:
-    inputs:
-      pr_number:
-        description: 'Pull request number'
-        required: true
 
 permissions:
-  pull-requests: write
-  contents: write
-  issues: write
-  repository-projects: write
+  pull-requests: write # approve/merge に必要
+  contents: write # merge に必要
+  issues: write  # label 付与に必要 (この例では不要)
+  repository-projects: write # PRタイトル変更等に必要(公式ドキュメントをご参照ください)
 
 jobs:
   dependabot-automation:
     runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
     timeout-minutes: 13
     steps:
-      # Dependabot が作成した PR かworkflow_dispatchで実行したPRに対してのみ実行する
-      - name: Check event and actor
-        run: |
-          if [[ "${{ github.event_name }}" != "workflow_dispatch" ]] && [[ "${{ github.actor }}" != "dependabot[bot]" ]]; then
-            echo "The event is not workflow_dispatch and the actor is not Dependabot. Exiting..."
-            exit 0
-          fi
-
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.branch || 'main' }}
-
-
-      # topic/dependabotがあればtopic/dependabotを使う
-      - name: Checkout code
-        run: |
-          BRANCH_NAME='topic/dependabot'
-          git fetch origin $BRANCH_NAME || true
-          if git rev-parse --verify $BRANCH_NAME; then
-            echo "Branch exists"
-            git checkout $BRANCH_NAME
-          else
-            echo "Branch does not exist, checkout default branch"
-            git checkout
-          fi
-
-      # workflow_dispatch -----------------------------------------------------
-      # workflow_dispatchで指定されたPRがdependabotによって作成されたものかを確認する
-      - name: Fetch PR data
-        id: pr_data
-        if: github.event_name == 'workflow_dispatch'
-        uses: octokit/graphql-action@v2.x
-        with:
-          query: |
-            query ($owner: String!, $repo: String!, $prNumber: Int!) {
-              repository(owner: $owner, name: $repo) {
-                pullRequest(number: $prNumber) {
-                  author {
-                    login
-                  }
-                  title
-                  url
-                }
-              }
-            }
-          variables: |
-            {
-              "owner": "${{ github.repository_owner }}",
-              "repo": "${{ github.event.repository.name }}",
-              "prNumber": "${{ github.event.inputs.pr_number }}"
-            }
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # workflow_dispatchで指定されたPRがdependabotではない場合はエラー終了する
-      - name: Check if PR was created by dependabot
-        if: github.event_name == 'workflow_dispatch'
-        id: check_author
-        run: |
-          if [[ "${{ fromJson(steps.pr_data.outputs.data).repository.pullRequest.author.login }}" != "dependabot[bot]" ]]; then
-            echo "PR was not created by Dependabot. Exiting..."
-            exit 1
-          fi
-
-      # PRのmetadataを取得する (workflow_dispatch)
       - name: Dependabot metadata
         id: metadata
-        if: github.event_name == 'workflow_dispatch'
         uses: dependabot/fetch-metadata@v1.3.5
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PULL_REQUEST_NUMBER: ${{ steps.pr_data.outputs.number }}
-
-      # 必要なデータを出力する(pr_ref)
-      - name: set output pr_ref
-        if: github.event_name == 'workflow_dispatch'
-        run: |
-          echo "update-type=${{ steps.metadata.outputs.update-type }}" >> $GITHUB_ENV
-          echo "dependency-type=${{ steps.metadata.outputs.dependency-type }}" >> $GITHUB_ENV
-          echo "url=${{ steps.pr_data.outputs.html_url }}" >> $GITHUB_ENV
-          echo "title=${{ steps.pr_data.outputs.title }}" >> $GITHUB_ENV
-          echo "ref=${{ fromJson(steps.pr_data.outputs.data).repository.pullRequest.headRefName }}" >> $GITHUB_ENV
-
-      # dependabot -----------------------------------------------------
-      # PRのmetadataを取得する
-      - name: Dependabot metadata (dependabot)
-        if: github.event_name != 'workflow_dispatch'
-        id: metadata2
-        uses: dependabot/fetch-metadata@v1.3.5
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # 必要なデータを出力する(pr_data)
-      - name: set output pr_data (dependabot)
-        if: github.event_name != 'workflow_dispatch'
-        run: |
-          echo "update-type=${{ steps.metadata2.outputs.update-type }}" >> $GITHUB_ENV
-          echo "dependency-type=${{ steps.metadata2.outputs.dependency-type }}" >> $GITHUB_ENV
-          echo "url=${{ github.event.pull_request.html_url }}" >> $GITHUB_ENV
-          echo "title=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
-          echo "ref=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
-
-      # 共通 -----------------------------------------------------
-      # topic/dependabotブランチを取得（ない場合は作成）する
-      - name: Create or checkout branch (dependabot)
-        run: |
-          BRANCH_NAME='topic/dependabot'
-          git checkout -b "$BRANCH_NAME" || git checkout "$BRANCH_NAME"
-          git pull origin ${{ env.ref }}
-          git push origin "$BRANCH_NAME"
-
       - name: Approve & enable auto-merge for Dependabot PR
         if: |
-          env.update-type == 'version-update:semver-patch' ||
-          (env.update-type == 'version-update:semver-minor' && env.dependency-type == 'direct:development')
+          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+          (steps.metadata.outputs.update-type == 'version-update:semver-minor' && steps.metadata.outputs.dependency-type == 'direct:development')
         run: |
           gh pr review --approve "$PR_URL"
           gh pr edit "$PR_URL" -t "(auto merged) $PR_TITLE"
-          gh pr merge --merge "$PR_URL"
+          gh pr merge --auto --merge "$PR_URL"
         env:
-          PR_URL: ${{ env.url }}
-          PR_TITLE: ${{ env.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
