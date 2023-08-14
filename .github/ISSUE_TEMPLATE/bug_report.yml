@@ -1,8 +1,7 @@
 name: custom
-description: QAレポート作成
+description: "QAレポート作成"
 title: "[QA]: "
 labels: ["QA"]
-assignees: ""
 body:
   - type: input
     id: Version
