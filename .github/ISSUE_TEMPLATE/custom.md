@@ -5,12 +5,6 @@ title: "[QA]: "
 labels: ["QA"]
 assignees:
 body:
-  - type: input
-    id: versions
-    attributes:
-      label: 発生バージョン
-    validations:
-      required: false
   - type: dropdown
     id: os
     attributes:
