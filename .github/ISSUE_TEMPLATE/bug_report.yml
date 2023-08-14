@@ -30,15 +30,16 @@ body:
     required: false
 - type: dropdown
   id: browsers
-  label: どのブラウザで問題が発生したか
-  multiple: true
-  options:
-    - Chrome
-    - Microsoft Edge
-    - Safari
-    - mobile Safari
-    - Firefox
-    - other
+  attributes:
+    label: どのブラウザで問題が発生したか
+    multiple: true
+    options:
+      - Chrome
+      - Microsoft Edge
+      - Safari
+      - mobile Safari
+      - Firefox
+      - other
   validations:
     required: true
 - type: textarea
