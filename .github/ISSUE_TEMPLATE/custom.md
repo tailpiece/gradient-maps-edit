@@ -6,7 +6,7 @@ labels: ["QA"]
 assignees:
 body:
   - type: input
-    id: version
+    id: versions
     attributes:
       label: 発生バージョン
     validations:
