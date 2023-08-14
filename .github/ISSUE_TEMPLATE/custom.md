@@ -6,10 +6,18 @@ labels: ["QA"]
 assignees:
 body:
   - type: input
+    id: About
+    attributes:
+      label: About
+      multiple: false
+      options:
+        - 1.0.2 (Default)
+        - 1.0.3 (Edge)
+      default: 0
+  - type: input
     id: Version
     attributes:
       label: 発生バージョン
-      description: What version of our software are you running?
       multiple: false
       options:
         - 1.0.2 (Default)
