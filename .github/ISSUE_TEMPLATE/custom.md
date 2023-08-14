@@ -1,6 +1,6 @@
-name: custom
+---
+name: QAレポート作成
 about: QAレポート作成
-description: QAレポート作成
 title: "[QA]: "
 labels: ["QA"]
 assignees:
@@ -68,3 +68,4 @@ body:
       label: 関連ログ出力
       description: 関連するログ出力をコピー＆ペーストしてください。これは自動的にコードにフォーマットされます。
       render: shell
+---
