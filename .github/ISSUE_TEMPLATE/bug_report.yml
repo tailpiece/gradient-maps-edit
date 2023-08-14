@@ -12,13 +12,13 @@ body:
   attributes:
     label: 不具合発生機種
     multiple: true
-  options:
-    - macintosh
-    - windows
-    - linux
-    - iPhone (スマートフォン)
-    - iPad (スマートフォン)
-    - Android (スマートフォン)
+    options:
+      - macintosh
+      - windows
+      - linux
+      - iPhone (スマートフォン)
+      - iPad (スマートフォン)
+      - Android (スマートフォン)
   validations:
     required: true
 - type: input
