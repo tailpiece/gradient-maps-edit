@@ -1,7 +1,7 @@
 ---
 name: QA template
 about: QAレポート作成
-title: "[QA]: "
+title: "[QA]: [DATE]: [FEATURE NAME]"
 labels: QA
 assignees: 
 
