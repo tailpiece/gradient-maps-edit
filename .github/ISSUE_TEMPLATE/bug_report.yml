@@ -43,6 +43,17 @@ body:
   validations:
     required: true
 - type: textarea
+  id: url
+  attributes:
+    label: 画面・URL
+    description: 実際に動く環境へのURL または スクショ・動画など
+    value: |
+      - [ ] https://housing-dev.roov.space/
+      - [ ] https://housing-dev2.roov.space/
+      - [ ] https://housing-dev3.roov.space/
+  validations:
+    required: true
+- type: textarea
   id: what-happened
   attributes:
     label: 再現手順
