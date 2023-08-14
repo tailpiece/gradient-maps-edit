@@ -6,7 +6,7 @@ body:
 - type: input
   id: Version
   attributes:
-    abel: 発生バージョン
+    label: 発生バージョン
 - type: dropdown
   id: os
   attributes:
