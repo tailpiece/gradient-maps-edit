@@ -5,11 +5,11 @@ title: "[QA]: "
 labels: ["QA"]
 assignees:
 body:
-- type: input
+  - type: input
     id: Version
     attributes:
       label: 発生バージョン
-- type: dropdown
+  - type: dropdown
     id: os
     attributes:
       label: 不具合発生機種
