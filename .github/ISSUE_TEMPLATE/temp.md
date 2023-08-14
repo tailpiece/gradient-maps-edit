@@ -1,7 +1,7 @@
 ---
-name: QA template
-about: QAレポート作成
-title: "[QA]: [DATE]: [FEATURE NAME]"
+name: QAレポート作成
+about: QAレポート作成のテンプレートです。
+title: "[QA]: "
 labels: QA
 assignees: 
 
