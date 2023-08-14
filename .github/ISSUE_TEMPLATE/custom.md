@@ -1,5 +1,5 @@
 ---
-name: QA template
+name: custom
 description: QAレポート作成
 title: "[QA]: "
 labels: ["QA"]
