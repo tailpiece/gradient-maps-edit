@@ -57,13 +57,13 @@ body:
   attributes:
     label: 補足・キャプチャ
     description: 何か気づいたことがあれば
-  render: markdown
+    render: markdown
 - type: textarea
   id: logs
   attributes:
     label: 関連ログ出力
     description: 関連するログ出力をコピー＆ペーストしてください。これは自動的にコードにフォーマットされます。
-  render: shell
+    render: shell
 
 
 
