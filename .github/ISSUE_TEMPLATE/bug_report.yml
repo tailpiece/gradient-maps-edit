@@ -6,74 +6,73 @@ body:
 - type: input
   id: Version
   attributes:
-    label: 発生バージョン
+  label: 発生バージョン
 - type: dropdown
   id: os
   attributes:
-    label: 不具合発生機種
-    multiple: true
-    options:
-      - macintosh
-      - windows
-      - linux
-      - iPhone (スマートフォン)
-      - iPad (スマートフォン)
-      - Android (スマートフォン)
+  label: 不具合発生機種
+  multiple: true
+  options:
+  - macintosh
+  - windows
+  - linux
+  - iPhone (スマートフォン)
+  - iPad (スマートフォン)
+  - Android (スマートフォン)
   validations:
-    required: true
+  required: true
 - type: input
   id: os-version
   attributes:
-    label: os version
-    description: OSのバージョンを記載してください（windows、スマホは必須）
+  label: os version
+  description: OSのバージョンを記載してください（windows、スマホは必須）
   validations:
-    required: false
+  required: false
 - type: dropdown
   id: browsers
   attributes:
-    label: どのブラウザで問題が発生したか
-    multiple: true
-    options:
-      - Chrome
-      - Microsoft Edge
-      - Safari
-      - mobile Safari
-      - Firefox
-      - other
+  label: どのブラウザで問題が発生したか
+  multiple: true
+  options:
+  - Chrome
+  - Microsoft Edge
+  - Safari
+  - mobile Safari
+  - Firefox
+  - other
   validations:
-    required: true
+  required: true
 - type: textarea
   id: url
   attributes:
-    label: 画面・URL
-    description: 実際に動く環境へのURL または スクショ・動画など
-    value: |
-      - [ ] https://housing-dev.roov.space/
-      - [ ] https://housing-dev2.roov.space/
-      - [ ] https://housing-dev3.roov.space/
+  label: 画面・URL
+  description: 実際に動く環境へのURL または スクショ・動画など
+  value: |
+  - [ ] https://housing-dev.roov.space/
+  - [ ] https://housing-dev2.roov.space/
+  - [ ] https://housing-dev3.roov.space/
   validations:
-    required: true
+  required: true
 - type: textarea
   id: what-happened
   attributes:
-    label: 再現手順
-    placeholder: |
-      1. In this environment...
-      1. With this config...
-      1. Run '...'
-      1. See error...
+  label: 再現手順
+  placeholder: |
+  1. In this environment...
+  1. With this config...
+  1. Run '...'
+  1. See error...
   validations:
-    required: true
+  required: true
 - type: textarea
   attributes:
-    label: 補足・キャプチャ
-    description: 何か気づいたことがあれば
+  label: 補足・キャプチャ
+  description: 何か気づいたことがあれば
 - type: textarea
   id: logs
   attributes:
-    label: 関連ログ出力
-    description: 関連するログ出力をコピー＆ペーストしてください。これは自動的にコードにフォーマットされます。
-    render: shell
-
+  label: 関連ログ出力
+  description: 関連するログ出力をコピー＆ペーストしてください。これは自動的にコードにフォーマットされます。
+  render: shell
 
 
