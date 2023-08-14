@@ -27,7 +27,7 @@ assignees:
 
 ## 画面 <!-- 実際に動く環境へのURL または スクショ・動画など -->
 
-- https://housing-dev2.roov.space/
+- 
 
 ## 再現手順
 
