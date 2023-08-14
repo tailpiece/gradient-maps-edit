@@ -47,9 +47,6 @@ body:
   attributes:
     label: 画面・URL
     description: 実際に動く環境へのURL または スクショ・動画など
-    value: ""
-  validations:
-    required: true
 - type: textarea
   id: what-happened
   attributes:
