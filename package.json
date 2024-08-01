@@ -15,7 +15,7 @@
     "bootstrap": "^4.6.2",
     "jquery": "^3.7.1",
     "popper.js": "^1.16.1",
-    "vue": "^2.7.14",
+    "vue": "^3.4.35",
     "vue-swatches": "^2.1.1"
   },
   "devDependencies": {
